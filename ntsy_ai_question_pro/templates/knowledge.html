@@ -1,0 +1,56 @@
+<!-- templates/knowledge.html -->
+{% extends "base.html" %}
+
+{% block title %}知识库管理{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                创建知识库
+            </div>
+            <div class="card-body">
+                <form id="createKnowledgeBaseForm">
+                    <div class="mb-3">
+                        <label for="knowledgeBaseName" class="form-label">知识库名称</label>
+                        <input type="text" class="form-control" id="knowledgeBaseName" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">创建</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                文件上传
+            </div>
+            <div class="card-body">
+                <form id="uploadForm">
+                    <div class="mb-3">
+                        <label for="knowledgeBaseSelect" class="form-label">选择知识库</label>
+                        <select class="form-select" id="knowledgeBaseSelect" required>
+                            <option value="">请选择知识库...</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="files" class="form-label">选择文件</label>
+                        <input type="file" class="form-control" id="files" multiple required>
+                        <div class="form-text">支持的格式：PDF, Word, Excel, TXT, Markdown</div>
+                    </div>
+                    <div class="progress mb-3 d-none" id="uploadProgress">
+                        <div class="progress-bar" role="progressbar" style="width: 0%"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">上传</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/knowledge.js') }}"></script>
+{% endblock %}
